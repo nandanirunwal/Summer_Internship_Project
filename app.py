@@ -11,7 +11,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 # Gemini response generator
 def get_gemini_response(prompt_intro, pdf_text, job_desc):
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
     response = model.generate_content([prompt_intro, pdf_text, job_desc])
     return response.text
 
@@ -73,11 +73,16 @@ if submit_eval or submit_match:
             st.subheader("📊 Match Analysis")
             st.write(response)
     else:
-        st.warning("⚠️ Please upload your resume to proceed.")
+        st.warning("⚠ Please upload your resume to proceed.")
 
 # Footer
 st.markdown("---")
 st.markdown(
-    "<p style='text-align: center; font-size: 14px; color: gray;'>© 2025 All rights reserved by <strong>Nandani Runwal</strong></p>",
+    """
+    <p style='text-align: center; font-size: 14px; color: gray;'>
+    © 2025 All rights reserved by <strong>Nandani Runwal</strong>
+    </p>
+    """,
     unsafe_allow_html=True
 )
+
